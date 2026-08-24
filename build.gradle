@@ -1,19 +1,24 @@
+// Top-level build file where you add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        jcenter()
         google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        // Enforces a stable, backward-compatible Gradle pipeline track
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
-        maven {
-            url "https://jitpack.io"
-        }
         google()
+        mavenCentral()
+        // Critical: Directs the IDE to the open-source repository hosting the camera framework
+        maven { url 'https://jitpack.io' }
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

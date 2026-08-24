@@ -53,6 +53,15 @@ public class HistogramView extends View
             if (value > max)
                 max = value;
         }
+        // A totally black frame (or the very first callback before real data has
+        // arrived) reports every bin as 0, so max stays 0. h / max below is a
+        // float division, so it doesn't throw -- it silently produces Infinity,
+        // which then multiplies into NaN a few lines down and gets fed straight
+        // into Path.lineTo(). Non-finite coordinates passed to the native Skia
+        // canvas are a known source of native rendering crashes on older Android
+        // builds like this one, so just skip drawing until there's real data.
+        if (max == 0 || histogram.length == 0)
+            return;
         final float w = getWidth();
         final float h = getHeight();
         final float dx = 0;

@@ -14,9 +14,10 @@ android {
     defaultConfig {
         applicationId "com.obsidium.bettermanual"
         minSdkVersion 10
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 10
         versionCode 14
-        versionName '1.5.6'
+        versionName '1.5.7'
         signingConfig signingConfigs.sign
     }
     buildTypes {

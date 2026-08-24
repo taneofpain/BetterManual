@@ -1,5 +1,6 @@
 package com.obsidium.bettermanual.capture;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.obsidium.bettermanual.KeyEvents;
@@ -266,11 +267,12 @@ public class CaptureModeTimelapse extends CaptureMode implements KeyEvents, Capt
         return false;
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public boolean onEnterKeyUp() {
         Log.d(TAG,"onEnterKeyDown" + currentdial);
         if (currentdial == TLS_SET_NONE) {
-            if (prepare());
+            if (prepare())
                 updateTimelapseInterval();
         }
         else if (currentdial == TLS_SET_INTERVAL) {

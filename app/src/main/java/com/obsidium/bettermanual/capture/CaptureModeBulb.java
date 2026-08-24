@@ -80,7 +80,7 @@ public class CaptureModeBulb extends CaptureMode implements CaptureSession.Captu
         cameraUiInterface.getActivityInterface().setBulbCapture(true);
         cameraUiInterface.getActivityInterface().setCaptureDoneEventListner(this);
         CameraInstance.GET().takePicture();
-        if (bulbCaptureTime > 0);
+        if (bulbCaptureTime > 0)
             cameraUiInterface.getActivityInterface().getMainHandler().postDelayed(cancelPictureRunner,bulbCaptureTime);
     }
 

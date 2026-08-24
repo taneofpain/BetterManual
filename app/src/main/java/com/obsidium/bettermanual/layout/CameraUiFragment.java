@@ -63,6 +63,10 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
     private List<Controller> dialViews;
     private int lastDialView;
 
+    // Debounces the zoom lever: hardware auto-repeats onKeyDown while the lever is
+    // held, so without this a held press would keep re-firing the fragment switch.
+    private boolean m_zoomLeverPressed;
+
     // Timelapse
 
     private CaptureModeTimelapse timelapse;
@@ -585,17 +589,29 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
 
     @Override
     public boolean onZoomTeleKey() {
-        return false;
+        // The zoom lever (physical rocker) is used as a shortcut into the existing
+        // focus-assist magnification screen, same as the AEL button below.
+        if (!m_zoomLeverPressed) {
+            m_zoomLeverPressed = true;
+            activityInterface.loadFragment(MainActivity.FRAGMENT_PREVIEWMAGNIFICATION);
+        }
+        return true;
     }
 
     @Override
     public boolean onZoomWideKey() {
-        return false;
+        if (!m_zoomLeverPressed) {
+            m_zoomLeverPressed = true;
+            activityInterface.loadFragment(MainActivity.FRAGMENT_PREVIEWMAGNIFICATION);
+        }
+        return true;
     }
 
     @Override
     public boolean onZoomOffKey() {
-        return false;
+        // Lever returned to its neutral (unpressed) position.
+        m_zoomLeverPressed = false;
+        return true;
     }
 
     @Override
