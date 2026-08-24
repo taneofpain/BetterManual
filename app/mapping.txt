@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 2.2.71
 # min_api: 10
-# pg_map_id: b462344
+# pg_map_id: cbf1973
 # common_typos_disable
 com.github.ma1co.openmemories.framework.DeviceInfo -> a.a.a.a.a.a:
     com.github.ma1co.openmemories.framework.DeviceInfo instance -> b
@@ -185,32 +185,32 @@ com.obsidium.bettermanual.KeyEventHandler -> a.b.a.e:
     3:3:void <init>(com.obsidium.bettermanual.KeyEvents):18:18 -> <init>
     4:4:void <init>(com.obsidium.bettermanual.KeyEvents):27:27 -> <init>
     5:5:void <init>(com.obsidium.bettermanual.KeyEvents):31:31 -> <init>
-    1:1:int getDialStatus(int):165:165 -> a
-    1:1:boolean onKeyDown(int,android.view.KeyEvent):104:104 -> b
-    2:2:boolean onKeyDown(int,android.view.KeyEvent):108:108 -> b
-    3:3:boolean onKeyDown(int,android.view.KeyEvent):156:156 -> b
-    4:4:boolean onKeyDown(int,android.view.KeyEvent):147:147 -> b
-    5:5:boolean onKeyDown(int,android.view.KeyEvent):160:160 -> b
-    6:6:boolean onKeyDown(int,android.view.KeyEvent):158:158 -> b
-    7:7:boolean onKeyDown(int,android.view.KeyEvent):154:154 -> b
-    8:8:boolean onKeyDown(int,android.view.KeyEvent):132:132 -> b
-    9:9:boolean onKeyDown(int,android.view.KeyEvent):152:152 -> b
-    10:10:boolean onKeyDown(int,android.view.KeyEvent):127:127 -> b
-    11:11:boolean onKeyDown(int,android.view.KeyEvent):125:125 -> b
-    12:12:boolean onKeyDown(int,android.view.KeyEvent):123:123 -> b
-    13:13:boolean onKeyDown(int,android.view.KeyEvent):121:121 -> b
-    14:14:boolean onKeyDown(int,android.view.KeyEvent):130:130 -> b
-    15:15:boolean onKeyDown(int,android.view.KeyEvent):141:141 -> b
-    16:16:boolean onKeyDown(int,android.view.KeyEvent):137:137 -> b
-    17:17:boolean onKeyDown(int,android.view.KeyEvent):145:145 -> b
+    1:1:int getDialStatus(int):170:170 -> a
+    1:2:boolean onKeyDown(int,android.view.KeyEvent):108:109 -> b
+    3:3:boolean onKeyDown(int,android.view.KeyEvent):113:113 -> b
+    4:4:boolean onKeyDown(int,android.view.KeyEvent):161:161 -> b
+    5:5:boolean onKeyDown(int,android.view.KeyEvent):152:152 -> b
+    6:6:boolean onKeyDown(int,android.view.KeyEvent):165:165 -> b
+    7:7:boolean onKeyDown(int,android.view.KeyEvent):163:163 -> b
+    8:8:boolean onKeyDown(int,android.view.KeyEvent):159:159 -> b
+    9:9:boolean onKeyDown(int,android.view.KeyEvent):137:137 -> b
+    10:10:boolean onKeyDown(int,android.view.KeyEvent):157:157 -> b
+    11:11:boolean onKeyDown(int,android.view.KeyEvent):132:132 -> b
+    12:12:boolean onKeyDown(int,android.view.KeyEvent):130:130 -> b
+    13:13:boolean onKeyDown(int,android.view.KeyEvent):128:128 -> b
+    14:14:boolean onKeyDown(int,android.view.KeyEvent):126:126 -> b
+    15:15:boolean onKeyDown(int,android.view.KeyEvent):135:135 -> b
+    16:16:boolean onKeyDown(int,android.view.KeyEvent):146:146 -> b
+    17:17:boolean onKeyDown(int,android.view.KeyEvent):142:142 -> b
     18:18:boolean onKeyDown(int,android.view.KeyEvent):150:150 -> b
-    19:19:boolean onKeyDown(int,android.view.KeyEvent):118:118 -> b
-    20:20:boolean onKeyDown(int,android.view.KeyEvent):135:135 -> b
-    21:21:boolean onKeyDown(int,android.view.KeyEvent):143:143 -> b
-    22:22:boolean onKeyDown(int,android.view.KeyEvent):112:112 -> b
-    23:23:boolean onKeyDown(int,android.view.KeyEvent):116:116 -> b
-    24:24:boolean onKeyDown(int,android.view.KeyEvent):114:114 -> b
-    25:25:boolean onKeyDown(int,android.view.KeyEvent):110:110 -> b
+    19:19:boolean onKeyDown(int,android.view.KeyEvent):155:155 -> b
+    20:20:boolean onKeyDown(int,android.view.KeyEvent):123:123 -> b
+    21:21:boolean onKeyDown(int,android.view.KeyEvent):140:140 -> b
+    22:22:boolean onKeyDown(int,android.view.KeyEvent):148:148 -> b
+    23:23:boolean onKeyDown(int,android.view.KeyEvent):117:117 -> b
+    24:24:boolean onKeyDown(int,android.view.KeyEvent):121:121 -> b
+    25:25:boolean onKeyDown(int,android.view.KeyEvent):119:119 -> b
+    26:26:boolean onKeyDown(int,android.view.KeyEvent):115:115 -> b
     1:1:boolean onKeyUp(int,android.view.KeyEvent):51:51 -> c
     2:2:boolean onKeyUp(int,android.view.KeyEvent):56:56 -> c
     3:3:boolean onKeyUp(int,android.view.KeyEvent):92:92 -> c
@@ -363,18 +363,20 @@ com.obsidium.bettermanual.Preferences -> a.b.a.h:
     1:1:java.lang.String getDriveMode():67:67 -> i
     1:1:int getMinShutterSpeed():87:87 -> j
     1:1:java.lang.String getSceneMode():57:57 -> k
-    1:1:int getViewFlags(int):97:97 -> l
-    1:1:void setBulbTime(long):122:122 -> m
-    1:1:void setBurstDriveSpeed(java.lang.String):82:82 -> n
-    1:1:void setDialMode(int):112:112 -> o
-    1:1:void setDriveMode(java.lang.String):72:72 -> p
-    1:1:void setMinShutterSpeed(int):92:92 -> q
-    1:1:void setSceneMode(java.lang.String):62:62 -> r
-    1:1:void setShowStarAlign(boolean):137:137 -> s
-    1:1:void setShowStarAlignGrid(boolean):142:142 -> t
-    1:1:void setViewFlags(int):102:102 -> u
-    1:1:boolean showStarAlginView():127:127 -> v
-    1:1:boolean showStarAlginViewGrid():132:132 -> w
+    1:1:boolean getTimelapseScreenOff():151:151 -> l
+    1:1:int getViewFlags(int):97:97 -> m
+    1:1:void setBulbTime(long):122:122 -> n
+    1:1:void setBurstDriveSpeed(java.lang.String):82:82 -> o
+    1:1:void setDialMode(int):112:112 -> p
+    1:1:void setDriveMode(java.lang.String):72:72 -> q
+    1:1:void setMinShutterSpeed(int):92:92 -> r
+    1:1:void setSceneMode(java.lang.String):62:62 -> s
+    1:1:void setShowStarAlign(boolean):137:137 -> t
+    1:1:void setShowStarAlignGrid(boolean):142:142 -> u
+    1:1:void setTimelapseScreenOff(boolean):156:156 -> v
+    1:1:void setViewFlags(int):102:102 -> w
+    1:1:boolean showStarAlginView():127:127 -> x
+    1:1:boolean showStarAlginViewGrid():132:132 -> y
 com.obsidium.bettermanual.camera.BaseCamera -> a.b.a.i.a:
     com.obsidium.bettermanual.camera.BaseCamera$CameraEvents cameraEventsListner -> b
     com.sony.scalar.hardware.CameraEx m_camera -> c
@@ -390,27 +392,29 @@ com.obsidium.bettermanual.camera.BaseCamera -> a.b.a.i.a:
     1:1:void setCameraEventsListner(com.obsidium.bettermanual.camera.BaseCamera$CameraEvents):72:72 -> D
     1:5:void setDriveMode(java.lang.String):207:211 -> E
     1:3:void setExposureCompensation(int):132:134 -> F
-    1:3:void setFlashMode(java.lang.String):420:422 -> G
-    1:4:void setFlashType(java.lang.String):427:430 -> H
-    1:4:void setFocusMode(java.lang.String):186:189 -> I
-    1:1:void setFocusPosition(int):405:405 -> J
-    2:2:void setFocusPosition(int):407:407 -> J
-    1:4:void setISOSensitivity(int):286:289 -> K
-    1:4:void setImageAspectRatio(java.lang.String):221:224 -> L
-    1:4:void setImageQuality(java.lang.String):229:232 -> M
-    1:4:void setImageStabilisation(java.lang.String):347:350 -> N
-    1:4:void setLongExposureNoiseReduction(boolean):172:175 -> O
-    1:1:void setParameters(android.hardware.Camera$Parameters):123:123 -> P
-    1:1:void setPreviewMagnification(int,android.util.Pair):294:294 -> Q
-    1:2:void setPreviewMagnificationListener(com.sony.scalar.hardware.CameraEx$PreviewMagnificationListener):64:65 -> R
-    1:4:void setRedEyeReduction(java.lang.String):412:415 -> S
-    1:4:void setSceneMode(java.lang.String):194:197 -> T
-    1:4:void setSelfTimer(int):268:271 -> U
-    1:1:void setShutterListener(com.sony.scalar.hardware.CameraEx$ShutterListener):86:86 -> V
-    1:1:void stopPreviewMagnification():299:299 -> W
-    1:1:void adjustShutterSpeed(int):398:398 -> a
-    1:1:void decrementAperture():315:315 -> b
-    1:1:void decrementShutterSpeed():307:307 -> c
+    1:1:void setExposureCompleteListener(com.sony.scalar.hardware.CameraEx$ExposureCompleteListener):317:317 -> G
+    1:3:void setFlashMode(java.lang.String):448:450 -> H
+    1:4:void setFlashType(java.lang.String):455:458 -> I
+    1:4:void setFocusMode(java.lang.String):186:189 -> J
+    1:1:void setFocusPosition(int):433:433 -> K
+    2:2:void setFocusPosition(int):435:435 -> K
+    1:4:void setISOAutoMax(int):305:308 -> L
+    1:4:void setISOSensitivity(int):286:289 -> M
+    1:4:void setImageAspectRatio(java.lang.String):221:224 -> N
+    1:4:void setImageQuality(java.lang.String):229:232 -> O
+    1:4:void setImageStabilisation(java.lang.String):375:378 -> P
+    1:4:void setLongExposureNoiseReduction(boolean):172:175 -> Q
+    1:1:void setParameters(android.hardware.Camera$Parameters):123:123 -> R
+    1:1:void setPreviewMagnification(int,android.util.Pair):322:322 -> S
+    1:2:void setPreviewMagnificationListener(com.sony.scalar.hardware.CameraEx$PreviewMagnificationListener):64:65 -> T
+    1:4:void setRedEyeReduction(java.lang.String):440:443 -> U
+    1:4:void setSceneMode(java.lang.String):194:197 -> V
+    1:4:void setSelfTimer(int):268:271 -> W
+    1:1:void setShutterListener(com.sony.scalar.hardware.CameraEx$ShutterListener):86:86 -> X
+    1:1:void stopPreviewMagnification():327:327 -> Y
+    1:1:void adjustShutterSpeed(int):426:426 -> a
+    1:1:void decrementAperture():343:343 -> b
+    1:1:void decrementShutterSpeed():335:335 -> c
     1:1:void fireOnCameraOpen(boolean):78:78 -> d
     2:2:void fireOnCameraOpen(boolean):80:80 -> d
     1:1:com.sony.scalar.hardware.CameraEx$AutoPictureReviewControl getAutoPictureReviewControls():46:46 -> e
@@ -423,20 +427,20 @@ com.obsidium.bettermanual.camera.BaseCamera -> a.b.a.i.a:
     1:1:float getExposureCompensationStep():148:148 -> l
     2:2:float getExposureCompensationStep():152:152 -> l
     1:1:int getISOSensitivity():281:281 -> m
-    1:1:java.lang.String getImageStabilisationMode():342:342 -> n
+    1:1:java.lang.String getImageStabilisationMode():370:370 -> n
     1:1:boolean getLongeExposureNR():181:181 -> o
     1:1:int getMaxExposureCompensation():138:138 -> p
     1:1:int getMinExposureCompensation():142:142 -> q
     1:1:com.sony.scalar.hardware.CameraEx$ParametersModifier getModifier():110:110 -> r
     1:1:android.hardware.Camera$Parameters getParameters():105:105 -> s
     1:1:java.lang.String getSceneMode():202:202 -> t
-    1:1:android.util.Pair getShutterSpeed():393:393 -> u
+    1:1:android.util.Pair getShutterSpeed():421:421 -> u
     1:1:java.util.List getSupportedISOSensitivities():276:276 -> v
-    1:1:void incrementAperture():319:319 -> w
-    1:1:void incrementShutterSpeed():311:311 -> x
+    1:1:void incrementAperture():347:347 -> w
+    1:1:void incrementShutterSpeed():339:339 -> x
     1:1:boolean isAutoShutterSpeedLowLimitSupported():250:250 -> y
-    1:1:boolean isImageStabSupported():330:330 -> z
-    2:2:boolean isImageStabSupported():335:335 -> z
+    1:1:boolean isImageStabSupported():358:358 -> z
+    2:2:boolean isImageStabSupported():363:363 -> z
 com.obsidium.bettermanual.camera.BaseCamera$CameraEvents -> a.b.a.i.a$a:
     void onCameraOpen(boolean) -> q
 com.obsidium.bettermanual.camera.CameraInstance -> a.b.a.i.b:
@@ -460,60 +464,60 @@ com.obsidium.bettermanual.camera.CameraInstance -> a.b.a.i.b:
     1:1:void <init>():64:64 -> <init>
     2:2:void <init>():42:42 -> <init>
     3:3:void <init>():46:46 -> <init>
-    1:1:com.obsidium.bettermanual.camera.CameraInstance GET():69:69 -> X
-    1:1:java.lang.String access$000(com.obsidium.bettermanual.camera.CameraInstance):41:41 -> Y
-    1:5:void applySettings():156:160 -> Z
-    6:8:void applySettings():162:164 -> Z
-    9:9:void applySettings():166:166 -> Z
-    10:10:void applySettings():169:169 -> Z
-    11:16:void applySettings():171:176 -> Z
-    17:17:void applySettings():182:182 -> Z
-    18:18:void applySettings():188:188 -> Z
-    19:19:void applySettings():211:211 -> Z
-    1:1:void cancelCapture():321:321 -> a0
-    1:2:void closeCamera():228:229 -> b0
-    3:3:void closeCamera():233:233 -> b0
-    4:5:void closeCamera():236:237 -> b0
-    6:7:void closeCamera():239:240 -> b0
-    8:8:void closeCamera():242:242 -> b0
-    9:9:void closeCamera():246:246 -> b0
-    10:12:void closeCamera():249:251 -> b0
-    13:15:void closeCamera():253:255 -> b0
-    16:18:void closeCamera():257:259 -> b0
-    19:20:void closeCamera():261:262 -> b0
-    21:22:void closeCamera():264:265 -> b0
-    23:24:void closeCamera():267:268 -> b0
-    25:26:void closeCamera():270:271 -> b0
-    27:29:void closeCamera():273:275 -> b0
-    30:32:void closeCamera():277:279 -> b0
-    33:35:void closeCamera():281:283 -> b0
-    36:40:void closeCamera():287:291 -> b0
-    1:1:void enableHwShutterButton():310:310 -> c0
-    1:4:void initCamera():358:361 -> d0
-    5:5:void initCamera():363:363 -> d0
-    6:6:void initCamera():366:366 -> d0
-    1:3:void initParameters():103:105 -> e0
-    4:6:void initParameters():107:109 -> e0
-    7:9:void initParameters():111:113 -> e0
-    10:11:void initParameters():115:116 -> e0
-    12:14:void initParameters():118:120 -> e0
-    15:16:void initParameters():122:123 -> e0
-    17:18:void initParameters():125:126 -> e0
-    19:21:void initParameters():128:130 -> e0
-    22:22:void initParameters():133:133 -> e0
-    23:24:void initParameters():135:136 -> e0
-    25:27:void initParameters():139:141 -> e0
-    28:30:void initParameters():143:145 -> e0
-    31:33:void initParameters():147:149 -> e0
-    34:34:void initParameters():151:151 -> e0
-    1:1:void setSurfaceHolder(android.view.SurfaceHolder):295:295 -> f0
-    1:1:void startCamera():77:77 -> g0
-    2:2:void startCamera():88:88 -> g0
-    3:4:void startCamera():93:94 -> g0
-    5:6:void startCamera():84:85 -> g0
-    1:1:void startPreview():300:300 -> h0
-    1:1:void stopPreview():305:305 -> i0
-    1:1:void takePicture():327:327 -> j0
+    1:1:com.obsidium.bettermanual.camera.CameraInstance GET():69:69 -> Z
+    1:1:java.lang.String access$000(com.obsidium.bettermanual.camera.CameraInstance):41:41 -> a0
+    1:5:void applySettings():156:160 -> b0
+    6:8:void applySettings():162:164 -> b0
+    9:9:void applySettings():166:166 -> b0
+    10:10:void applySettings():169:169 -> b0
+    11:16:void applySettings():171:176 -> b0
+    17:17:void applySettings():182:182 -> b0
+    18:18:void applySettings():188:188 -> b0
+    19:19:void applySettings():211:211 -> b0
+    1:1:void cancelCapture():321:321 -> c0
+    1:2:void closeCamera():228:229 -> d0
+    3:3:void closeCamera():233:233 -> d0
+    4:5:void closeCamera():236:237 -> d0
+    6:7:void closeCamera():239:240 -> d0
+    8:8:void closeCamera():242:242 -> d0
+    9:9:void closeCamera():246:246 -> d0
+    10:12:void closeCamera():249:251 -> d0
+    13:15:void closeCamera():253:255 -> d0
+    16:18:void closeCamera():257:259 -> d0
+    19:20:void closeCamera():261:262 -> d0
+    21:22:void closeCamera():264:265 -> d0
+    23:24:void closeCamera():267:268 -> d0
+    25:26:void closeCamera():270:271 -> d0
+    27:29:void closeCamera():273:275 -> d0
+    30:32:void closeCamera():277:279 -> d0
+    33:35:void closeCamera():281:283 -> d0
+    36:40:void closeCamera():287:291 -> d0
+    1:1:void enableHwShutterButton():310:310 -> e0
+    1:4:void initCamera():358:361 -> f0
+    5:5:void initCamera():363:363 -> f0
+    6:6:void initCamera():366:366 -> f0
+    1:3:void initParameters():103:105 -> g0
+    4:6:void initParameters():107:109 -> g0
+    7:9:void initParameters():111:113 -> g0
+    10:11:void initParameters():115:116 -> g0
+    12:14:void initParameters():118:120 -> g0
+    15:16:void initParameters():122:123 -> g0
+    17:18:void initParameters():125:126 -> g0
+    19:21:void initParameters():128:130 -> g0
+    22:22:void initParameters():133:133 -> g0
+    23:24:void initParameters():135:136 -> g0
+    25:27:void initParameters():139:141 -> g0
+    28:30:void initParameters():143:145 -> g0
+    31:33:void initParameters():147:149 -> g0
+    34:34:void initParameters():151:151 -> g0
+    1:1:void setSurfaceHolder(android.view.SurfaceHolder):295:295 -> h0
+    1:1:void startCamera():77:77 -> i0
+    2:2:void startCamera():88:88 -> i0
+    3:4:void startCamera():93:94 -> i0
+    5:6:void startCamera():84:85 -> i0
+    1:1:void startPreview():300:300 -> j0
+    1:1:void stopPreview():305:305 -> k0
+    1:1:void takePicture():327:327 -> l0
     1:1:void onShutterSequence(com.sony.scalar.hardware.CameraSequence$RawData,com.sony.scalar.hardware.CameraSequence):339:339 -> onShutterSequence
 com.obsidium.bettermanual.camera.CameraInstance$1 -> a.b.a.i.b$a:
     com.obsidium.bettermanual.camera.CameraInstance this$0 -> a
@@ -544,6 +548,7 @@ com.obsidium.bettermanual.camera.ShutterSpeedValue -> a.b.a.i.d:
     1:1:int getDenominator():39:39 -> a
     1:1:int getMillisecond():29:29 -> b
     1:1:int getNumerator():34:34 -> c
+    1:1:java.lang.String getShutterSpeed():44:44 -> d
 com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeAfBracket$AfBracketCaptureController$1$2t8YVzceeEy5Nk3dD9Ot082yZcs -> a.b.a.j.a:
 # {"id":"sourceFile","fileName":"lambda"}
     com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeAfBracket$AfBracketCaptureController$1$2t8YVzceeEy5Nk3dD9Ot082yZcs INSTANCE -> a
@@ -566,10 +571,13 @@ com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeBracket$BracketShutterCon
 com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeBulb$YKLFcVNv4PJNhoN19py2s_xto4g -> a.b.a.j.g:
 # {"id":"sourceFile","fileName":"lambda"}
     com.obsidium.bettermanual.capture.CaptureModeBulb f$0 -> a
-com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeTimelapse$Y90c9umQc6wDy4K-tJ7yy2CCnQQ -> a.b.a.j.h:
+com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeTimelapse$8xgww-aAXQJSsAro9o-c2H0sEEQ -> a.b.a.j.h:
 # {"id":"sourceFile","fileName":"lambda"}
     com.obsidium.bettermanual.capture.CaptureModeTimelapse f$0 -> a
-com.obsidium.bettermanual.capture.CaptureMode -> a.b.a.j.i:
+com.obsidium.bettermanual.capture.-$$Lambda$CaptureModeTimelapse$Y90c9umQc6wDy4K-tJ7yy2CCnQQ -> a.b.a.j.i:
+# {"id":"sourceFile","fileName":"lambda"}
+    com.obsidium.bettermanual.capture.CaptureModeTimelapse f$0 -> a
+com.obsidium.bettermanual.capture.CaptureMode -> a.b.a.j.j:
     com.obsidium.bettermanual.layout.CameraUiInterface cameraUiInterface -> c
     java.lang.Runnable m_countDownRunnable -> f
     int m_countdown -> e
@@ -586,13 +594,13 @@ com.obsidium.bettermanual.capture.CaptureMode -> a.b.a.j.i:
     4:6:void startCountDown():64:66 -> f0
     7:9:void startCountDown():69:71 -> f0
     1:2:void onIsSupportedChanged():81:82 -> j
-com.obsidium.bettermanual.capture.CaptureMode$1 -> a.b.a.j.i$a:
+com.obsidium.bettermanual.capture.CaptureMode$1 -> a.b.a.j.j$a:
     com.obsidium.bettermanual.capture.CaptureMode this$0 -> a
     1:1:void <init>(com.obsidium.bettermanual.capture.CaptureMode):38:38 -> <init>
     1:1:void run():42:42 -> run
     2:3:void run():44:45 -> run
     4:5:void run():49:50 -> run
-com.obsidium.bettermanual.capture.CaptureModeAfBracket -> a.b.a.j.j:
+com.obsidium.bettermanual.capture.CaptureModeAfBracket -> a.b.a.j.k:
     java.lang.String TAG -> g
     com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController afBracketCaptureController -> k
     int pictureCount -> j
@@ -683,7 +691,7 @@ com.obsidium.bettermanual.capture.CaptureModeAfBracket -> a.b.a.j.j:
     1:2:void startShooting():89:90 -> y
     3:5:void startShooting():92:94 -> y
     boolean onModeDialChanged(int) -> z
-com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController -> a.b.a.j.j$a:
+com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController -> a.b.a.j.k$a:
     java.lang.Thread captureThread -> b
     java.lang.Object captureWaitLock -> d
     boolean doFocus -> e
@@ -711,7 +719,7 @@ com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureControlle
     1:2:void captureRange():480:481 -> i
     3:3:void captureRange():534:534 -> i
     int getStep(int) -> j
-com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController$1 -> a.b.a.j.j$a$a:
+com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController$1 -> a.b.a.j.k$a$a:
 # {"id":"sourceFile","fileName":"CaptureModeAfBracket.java"}
     com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController this$1 -> a
     1:1:void <init>(com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureController):481:481 -> <init>
@@ -734,7 +742,7 @@ com.obsidium.bettermanual.capture.CaptureModeAfBracket$AfBracketCaptureControlle
     21:21:void run():524:524 -> run
     22:22:void run():526:526 -> run
     23:23:void run():528:528 -> run
-com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState -> a.b.a.j.j$b:
+com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState -> a.b.a.j.k$b:
     com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState SelectNear -> b
     com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState None -> a
     com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState SelectPictureCount -> d
@@ -745,7 +753,7 @@ com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState -> a.b.a.j.j$b:
     1:1:void <init>(java.lang.String,int):45:45 -> <init>
     1:1:com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState valueOf(java.lang.String):45:45 -> valueOf
     1:1:com.obsidium.bettermanual.capture.CaptureModeAfBracket$UiState[] values():45:45 -> values
-com.obsidium.bettermanual.capture.CaptureModeBracket -> a.b.a.j.k:
+com.obsidium.bettermanual.capture.CaptureModeBracket -> a.b.a.j.l:
     java.lang.String TAG -> g
     int BRACKET_PICCOUNT -> n
     int currentDialMode -> o
@@ -842,7 +850,7 @@ com.obsidium.bettermanual.capture.CaptureModeBracket -> a.b.a.j.k:
     1:2:void startShooting():104:105 -> y
     3:5:void startShooting():107:109 -> y
     boolean onModeDialChanged(int) -> z
-com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController -> a.b.a.j.k$a:
+com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController -> a.b.a.j.l$a:
     com.obsidium.bettermanual.capture.CaptureModeBracket this$0 -> d
     java.lang.Thread captureThread -> b
     java.lang.Object waitlock -> c
@@ -859,7 +867,7 @@ com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController ->
     1:1:java.lang.Object access$000(com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController):442:442 -> c
     1:1:void captureRange():480:480 -> d
     2:2:void captureRange():527:527 -> d
-com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController$1 -> a.b.a.j.k$a$a:
+com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController$1 -> a.b.a.j.l$a$a:
 # {"id":"sourceFile","fileName":"CaptureModeBracket.java"}
     com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController this$1 -> a
     1:1:void <init>(com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController):480:480 -> <init>
@@ -880,7 +888,7 @@ com.obsidium.bettermanual.capture.CaptureModeBracket$BracketShutterController$1 
     15:15:void run():516:516 -> run
     16:16:void run():518:518 -> run
     17:17:void run():521:521 -> run
-com.obsidium.bettermanual.capture.CaptureModeBulb -> a.b.a.j.l:
+com.obsidium.bettermanual.capture.CaptureModeBulb -> a.b.a.j.m:
     long bulbCaptureTime -> i
     int currentdial -> l
     java.lang.String TAG -> h
@@ -963,32 +971,56 @@ com.obsidium.bettermanual.capture.CaptureModeBulb -> a.b.a.j.l:
     1:3:void startShooting():76:78 -> y
     4:8:void startShooting():80:84 -> y
     boolean onModeDialChanged(int) -> z
-com.obsidium.bettermanual.capture.CaptureModeInterface -> a.b.a.j.m:
+com.obsidium.bettermanual.capture.CaptureModeInterface -> a.b.a.j.n:
     void startShooting() -> y
-com.obsidium.bettermanual.capture.CaptureModeTimelapse -> a.b.a.j.n:
-    java.lang.String TAG -> g
-    int TLS_SET_PICCOUNT -> n
-    int currentdial -> o
-    int TLS_SET_NONE -> l
-    int TLS_SET_INTERVAL -> m
-    int m_timelapsePicsTaken -> j
-    int m_autoPowerOffTimeBackup -> k
-    int m_timelapseInterval -> h
-    int m_timelapsePicCount -> i
-    java.lang.Runnable m_timelapseRunnable -> p
-    1:1:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):34:34 -> <init>
-    2:2:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):19:19 -> <init>
-    3:6:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):26:29 -> <init>
-    7:7:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):197:197 -> <init>
+com.obsidium.bettermanual.capture.CaptureModeTimelapse -> a.b.a.j.o:
+    com.sony.scalar.hardware.avio.DisplayManager m_displayManager -> n
+    int m_autoPowerOffTimeBackup -> l
+    boolean m_screenIsOff -> o
+    java.lang.String TAG -> h
+    int m_timelapsePicCount -> j
+    int currentdial -> K
+    int TLS_SET_HOLYGRAIL_MAXISO -> I
+    int TLS_SET_RAMP_END_INTERVAL -> G
+    int TLS_SET_SCREENOFF_TOGGLE -> E
+    int TLS_SET_INTERVAL -> C
+    int m_holyGrailOriginalIso -> A
+    int m_holyGrailMaxShutterIndex -> y
+    java.lang.Runnable m_timelapseRunnable -> L
+    int m_rampTotalShots -> u
+    java.lang.Runnable m_wakeDisplayRunnable -> q
+    long m_lastShotTime -> m
+    int m_timelapseIntervalStart -> s
+    boolean m_screenOffEnabled -> p
+    com.obsidium.bettermanual.capture.CaptureModeTimelapse s_activeInstance -> g
+    int TLS_SET_HOLYGRAIL_MAXSHUTTER -> J
+    int m_timelapsePicsTaken -> k
+    int TLS_SET_HOLYGRAIL_TOGGLE -> H
+    int m_timelapseInterval -> i
+    int TLS_SET_RAMP_TOGGLE -> F
+    boolean m_holyGrailEnabled -> v
+    int TLS_SET_PICCOUNT -> D
+    java.util.List m_supportedIsos -> w
+    int TLS_SET_NONE -> B
+    boolean m_rampIntervalEnabled -> r
+    int m_holyGrailBaseShutterIndex -> z
+    int m_holyGrailMaxIsoPos -> x
+    int m_timelapseIntervalEnd -> t
+    1:1:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):100:100 -> <init>
+    2:2:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):25:25 -> <init>
+    3:3:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):43:43 -> <init>
+    4:13:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):86:95 -> <init>
+    14:14:void <init>(com.obsidium.bettermanual.layout.CameraUiInterface):469:469 -> <init>
     boolean onC1KeyDown() -> A
+    1:2:void wakeDisplayIfOff():112:113 -> A0
     boolean onShutterKeyUp() -> B
     boolean onC1KeyUp() -> C
     boolean onDownKeyUp() -> D
     boolean onFnKeyUp() -> E
     boolean onLeftKeyUp() -> F
-    1:1:void toggle():39:39 -> G
-    2:2:void toggle():41:41 -> G
-    3:4:void toggle():44:45 -> G
+    1:1:void toggle():145:145 -> G
+    2:2:void toggle():147:147 -> G
+    3:4:void toggle():150:151 -> G
     boolean onMenuKeyUp() -> H
     boolean onUpKeyDown() -> I
     boolean onMovieKeyDown() -> J
@@ -1001,75 +1033,141 @@ com.obsidium.bettermanual.capture.CaptureModeTimelapse -> a.b.a.j.n:
     boolean onFocusKeyDown() -> Q
     boolean onPlayKeyUp() -> R
     boolean onRightKeyDown() -> S
-    1:1:boolean onLowerDialChanged(int):206:206 -> T
-    2:2:boolean onLowerDialChanged(int):209:209 -> T
-    3:3:boolean onLowerDialChanged(int):211:211 -> T
-    4:4:boolean onLowerDialChanged(int):217:217 -> T
-    5:5:boolean onLowerDialChanged(int):219:219 -> T
+    1:1:boolean onLowerDialChanged(int):479:479 -> T
+    2:2:boolean onLowerDialChanged(int):481:481 -> T
     boolean onRightKeyUp() -> b
     boolean onLeftKeyDown() -> c
     boolean onFnKeyDown() -> e
     boolean onDeleteKeyUp() -> f
-    1:6:void abort():108:113 -> g0
-    7:7:void abort():116:116 -> g0
-    8:8:void abort():132:132 -> g0
-    9:9:void abort():137:137 -> g0
+    1:7:void abort():251:257 -> g0
+    8:8:void abort():259:259 -> g0
+    9:9:void abort():263:263 -> g0
+    10:10:void abort():267:267 -> g0
+    11:11:void abort():271:271 -> g0
+    12:13:void abort():275:276 -> g0
+    14:15:void abort():278:279 -> g0
+    16:16:void abort():281:281 -> g0
+    17:17:void abort():284:284 -> g0
+    18:18:void abort():300:300 -> g0
+    19:19:void abort():305:305 -> g0
     boolean onMovieKeyUp() -> h
-    1:1:void decrement():144:144 -> h0
-    2:2:void decrement():147:147 -> h0
-    3:3:void decrement():149:149 -> h0
-    4:4:void decrement():151:151 -> h0
+    1:1:void confirmAndStart():613:613 -> h0
+    2:2:void confirmAndStart():616:616 -> h0
+    3:3:void confirmAndStart():618:618 -> h0
+    4:4:void confirmAndStart():631:631 -> h0
+    5:5:void confirmAndStart():633:633 -> h0
+    6:8:void confirmAndStart():636:638 -> h0
+    9:9:void confirmAndStart():632:632 -> h0
+    10:12:void confirmAndStart():643:645 -> h0
+    13:13:void confirmAndStart():652:652 -> h0
+    14:14:void confirmAndStart():656:656 -> h0
+    15:17:void confirmAndStart():661:663 -> h0
     boolean onAelKeyUp() -> i
-    1:3:void decrementPicCount():186:188 -> i0
-    1:2:void increment():157:158 -> j0
-    3:4:void increment():160:161 -> j0
+    1:1:void decrement():312:312 -> i0
+    2:3:void decrement():345:346 -> i0
+    4:6:void decrement():340:342 -> i0
+    7:9:void decrement():335:337 -> i0
+    10:11:void decrement():327:328 -> i0
+    12:13:void decrement():331:332 -> i0
+    14:15:void decrement():323:324 -> i0
+    16:18:void decrement():318:320 -> i0
+    19:19:void decrement():315:315 -> i0
+    1:3:void decrementPicCount():458:460 -> j0
     boolean onUpperDialChanged(int) -> k
-    1:2:void incrementPicCount():193:194 -> k0
+    1:1:java.lang.String formatInterval(int):418:418 -> k0
+    2:2:java.lang.String formatInterval(int):422:422 -> k0
     boolean onLensDetached() -> l
-    1:1:void lambda$new$0():197:197 -> l0
+    1:1:void increment():354:354 -> l0
+    2:3:void increment():391:392 -> l0
+    4:6:void increment():386:388 -> l0
+    7:9:void increment():381:383 -> l0
+    10:11:void increment():373:374 -> l0
+    12:13:void increment():377:378 -> l0
+    14:16:void increment():368:370 -> l0
+    17:19:void increment():360:362 -> l0
+    20:20:void increment():357:357 -> l0
     boolean onFocusKeyUp() -> m
-    void lambda$new$0$CaptureModeTimelapse() -> m0
+    1:2:void incrementPicCount():465:466 -> m0
     boolean onZoomTeleKey() -> n
-    1:2:boolean prepare():63:64 -> n0
-    3:7:boolean prepare():67:71 -> n0
-    8:8:boolean prepare():73:73 -> n0
-    9:9:boolean prepare():71:71 -> n0
-    10:10:boolean prepare():80:80 -> n0
+    void lambda$8xgww-aAXQJSsAro9o-c2H0sEEQ(com.obsidium.bettermanual.capture.CaptureModeTimelapse) -> n0
     boolean onDeleteKeyDown() -> o
-    1:2:void updateTimelapseInterval():166:167 -> o0
-    3:3:void updateTimelapseInterval():169:169 -> o0
-    4:4:void updateTimelapseInterval():171:171 -> o0
-    5:5:void updateTimelapseInterval():173:173 -> o0
+    1:1:void lambda$new$0():469:469 -> o0
+    1:1:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):806:806 -> onDone
+    2:3:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):809:810 -> onDone
+    4:4:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):814:814 -> onDone
+    5:6:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):819:820 -> onDone
+    7:7:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):822:822 -> onDone
+    8:9:void onDone(int,com.sony.scalar.hardware.CameraEx$ExposureInfo,com.sony.scalar.hardware.CameraEx):828:829 -> onDone
     int getNavigationHelpID() -> p
-    1:2:void updateTimelapsePictureCount():178:179 -> p0
-    3:3:void updateTimelapsePictureCount():181:181 -> p0
+    void lambda$new$0$CaptureModeTimelapse() -> p0
+    1:2:boolean prepare():169:170 -> q0
+    3:11:boolean prepare():173:181 -> q0
+    12:12:boolean prepare():186:186 -> q0
     boolean onMenuKeyDown() -> r
-    1:4:boolean onEnterKeyUp():273:276 -> t
-    5:5:boolean onEnterKeyUp():279:279 -> t
-    6:6:boolean onEnterKeyUp():281:281 -> t
-    7:7:boolean onEnterKeyUp():279:279 -> t
-    8:9:boolean onEnterKeyUp():283:284 -> t
-    10:10:boolean onEnterKeyUp():289:289 -> t
-    11:12:boolean onEnterKeyUp():291:292 -> t
+    1:1:void showSetupHint():198:198 -> r0
+    2:2:void showSetupHint():223:223 -> r0
+    3:3:void showSetupHint():220:220 -> r0
+    4:4:void showSetupHint():217:217 -> r0
+    5:5:void showSetupHint():214:214 -> r0
+    6:6:void showSetupHint():211:211 -> r0
+    7:7:void showSetupHint():207:207 -> r0
+    8:8:void showSetupHint():204:204 -> r0
+    9:9:void showSetupHint():201:201 -> r0
+    10:12:void showSetupHint():226:226 -> r0
+    int stepInterval(int,int) -> s0
+    1:2:boolean onEnterKeyUp():534:535 -> t
+    3:3:boolean onEnterKeyUp():604:604 -> t
+    4:6:boolean onEnterKeyUp():598:600 -> t
+    7:7:boolean onEnterKeyUp():580:580 -> t
+    8:11:boolean onEnterKeyUp():582:585 -> t
+    12:16:boolean onEnterKeyUp():587:591 -> t
+    17:17:boolean onEnterKeyUp():594:594 -> t
+    18:19:boolean onEnterKeyUp():575:576 -> t
+    20:20:boolean onEnterKeyUp():561:561 -> t
+    21:23:boolean onEnterKeyUp():563:565 -> t
+    24:25:boolean onEnterKeyUp():569:570 -> t
+    26:27:boolean onEnterKeyUp():556:557 -> t
+    28:29:boolean onEnterKeyUp():551:552 -> t
+    30:34:boolean onEnterKeyUp():543:547 -> t
+    35:36:boolean onEnterKeyUp():538:539 -> t
+    1:1:void turnScreenOff():118:118 -> t0
+    2:5:void turnScreenOff():122:125 -> t0
+    6:6:void turnScreenOff():130:130 -> t0
     boolean onLensAttached() -> u
-    1:2:void onCaptureDone():420:421 -> v
-    3:4:void onCaptureDone():429:430 -> v
-    5:6:void onCaptureDone():432:433 -> v
-    7:7:void onCaptureDone():435:435 -> v
-    8:10:void onCaptureDone():437:439 -> v
-    11:11:void onCaptureDone():442:442 -> v
-    12:13:void onCaptureDone():422:423 -> v
+    1:1:void updateHolyGrailMaxIso():445:445 -> u0
+    2:2:void updateHolyGrailMaxIso():447:447 -> u0
+    1:2:void onCaptureDone():836:837 -> v
+    3:4:void onCaptureDone():845:846 -> v
+    5:6:void onCaptureDone():848:849 -> v
+    7:7:void onCaptureDone():851:851 -> v
+    8:8:void onCaptureDone():854:854 -> v
+    9:10:void onCaptureDone():862:863 -> v
+    11:11:void onCaptureDone():865:865 -> v
+    12:13:void onCaptureDone():868:869 -> v
+    14:15:void onCaptureDone():879:880 -> v
+    16:16:void onCaptureDone():887:887 -> v
+    17:18:void onCaptureDone():898:899 -> v
+    19:19:void onCaptureDone():901:901 -> v
+    20:21:void onCaptureDone():838:839 -> v
+    1:2:void updateHolyGrailMaxShutter():452:453 -> v0
     boolean onZoomWideKey() -> w
+    1:1:void updateRampEndInterval():432:432 -> w0
     boolean onPlayKeyDown() -> x
-    1:2:void startShooting():92:93 -> y
-    3:3:void startShooting():96:96 -> y
-    4:6:void startShooting():101:103 -> y
+    1:1:void updateTimelapseInterval():427:427 -> x0
+    1:4:void startShooting():233:236 -> y
+    5:5:void startShooting():239:239 -> y
+    6:8:void startShooting():244:246 -> y
+    1:2:void updateTimelapsePictureCount():437:438 -> y0
+    3:3:void updateTimelapsePictureCount():440:440 -> y0
     boolean onModeDialChanged(int) -> z
-com.obsidium.bettermanual.capture.CaptureModeTimelapse$1 -> a.b.a.j.n$a:
+    1:1:void wakeDisplay():136:136 -> z0
+    2:2:void wakeDisplay():138:138 -> z0
+    3:3:void wakeDisplay():140:140 -> z0
+com.obsidium.bettermanual.capture.CaptureModeTimelapse$1 -> a.b.a.j.o$a:
     com.obsidium.bettermanual.capture.CaptureModeTimelapse this$0 -> a
-    1:1:void <init>(com.obsidium.bettermanual.capture.CaptureModeTimelapse):116:116 -> <init>
-    1:4:void run():119:122 -> run
-    5:6:void run():124:125 -> run
+    1:1:void <init>(com.obsidium.bettermanual.capture.CaptureModeTimelapse):284:284 -> <init>
+    1:4:void run():287:290 -> run
+    5:6:void run():292:293 -> run
 com.obsidium.bettermanual.controller.-$$Lambda$AbstractController$5died2QFuaP-DaAStf6eZyUcAXw -> a.b.a.k.a:
 # {"id":"sourceFile","fileName":"lambda"}
     com.obsidium.bettermanual.controller.AbstractController f$0 -> a
@@ -1616,25 +1714,25 @@ com.obsidium.bettermanual.layout.PreviewMagnificationFragment -> a.b.a.l.j:
     boolean onShutterKeyUp() -> B
     boolean onC1KeyUp() -> C
     boolean onDownKeyUp() -> D
-    1:3:boolean onFnKeyUp():250:252 -> E
-    4:5:boolean onFnKeyUp():255:256 -> E
+    1:3:boolean onFnKeyUp():258:260 -> E
+    4:5:boolean onFnKeyUp():263:264 -> E
     boolean onLeftKeyUp() -> F
     1:1:android.util.Pair access$100(com.obsidium.bettermanual.layout.PreviewMagnificationFragment):21:21 -> G
-    1:3:boolean onMenuKeyUp():281:283 -> H
-    4:5:boolean onMenuKeyUp():286:287 -> H
+    1:3:boolean onMenuKeyUp():289:291 -> H
+    4:5:boolean onMenuKeyUp():294:295 -> H
     1:1:boolean onUpKeyDown():161:161 -> I
     2:2:boolean onUpKeyDown():163:163 -> I
     boolean onMovieKeyDown() -> J
     boolean onEnterKeyDown() -> K
     boolean onAelKeyDown() -> L
-    1:3:boolean onZoomOffKey():380:382 -> M
+    1:3:boolean onZoomOffKey():388:390 -> M
     boolean onShutterKeyDown() -> N
-    1:2:boolean onDownKeyDown():177:178 -> O
-    boolean onUpKeyUp() -> P
+    1:2:boolean onDownKeyDown():185:186 -> O
+    1:3:boolean onUpKeyUp():176:178 -> P
     boolean onFocusKeyDown() -> Q
     boolean onPlayKeyUp() -> R
-    1:1:boolean onRightKeyDown():207:207 -> S
-    2:2:boolean onRightKeyDown():209:209 -> S
+    1:1:boolean onRightKeyDown():215:215 -> S
+    2:2:boolean onRightKeyDown():217:217 -> S
     1:1:boolean onLowerDialChanged(int):155:155 -> T
     1:1:android.util.Pair access$102(com.obsidium.bettermanual.layout.PreviewMagnificationFragment,android.util.Pair):21:21 -> U
     1:1:int access$200(com.obsidium.bettermanual.layout.PreviewMagnificationFragment):21:21 -> V
@@ -1643,29 +1741,29 @@ com.obsidium.bettermanual.layout.PreviewMagnificationFragment -> a.b.a.l.j:
     1:2:void movePreviewVertical(int):120:121 -> X
     3:4:void movePreviewVertical(int):125:126 -> X
     boolean onRightKeyUp() -> b
-    1:1:boolean onLeftKeyDown():192:192 -> c
-    2:2:boolean onLeftKeyDown():194:194 -> c
+    1:1:boolean onLeftKeyDown():200:200 -> c
+    2:2:boolean onLeftKeyDown():202:202 -> c
     boolean onFnKeyDown() -> e
     boolean onDeleteKeyUp() -> f
     boolean onMovieKeyUp() -> h
-    1:3:boolean onAelKeyUp():268:270 -> i
+    1:3:boolean onAelKeyUp():276:278 -> i
     1:1:boolean onUpperDialChanged(int):142:142 -> k
     2:2:boolean onUpperDialChanged(int):144:144 -> k
     3:4:boolean onUpperDialChanged(int):146:147 -> k
     boolean onLensDetached() -> l
     boolean onFocusKeyUp() -> m
-    1:3:boolean onZoomTeleKey():359:361 -> n
+    1:3:boolean onZoomTeleKey():367:369 -> n
     boolean onDeleteKeyDown() -> o
     1:2:void onChanged(boolean,int,int,android.util.Pair,com.sony.scalar.hardware.CameraEx):92:93 -> onChanged
     3:7:void onChanged(boolean,int,int,android.util.Pair,com.sony.scalar.hardware.CameraEx):98:102 -> onChanged
     8:11:void onChanged(boolean,int,int,android.util.Pair,com.sony.scalar.hardware.CameraEx):106:109 -> onChanged
     boolean onMenuKeyDown() -> r
     1:2:void Destroy():85:86 -> s
-    1:1:boolean onEnterKeyUp():232:232 -> t
-    2:2:boolean onEnterKeyUp():234:234 -> t
-    3:4:boolean onEnterKeyUp():237:238 -> t
+    1:1:boolean onEnterKeyUp():240:240 -> t
+    2:2:boolean onEnterKeyUp():242:242 -> t
+    3:4:boolean onEnterKeyUp():245:246 -> t
     boolean onLensAttached() -> u
-    1:3:boolean onZoomWideKey():368:370 -> w
+    1:3:boolean onZoomWideKey():376:378 -> w
     boolean onPlayKeyDown() -> x
     1:1:int access$000(com.obsidium.bettermanual.layout.PreviewMagnificationFragment):21:21 -> y
     boolean onModeDialChanged(int) -> z

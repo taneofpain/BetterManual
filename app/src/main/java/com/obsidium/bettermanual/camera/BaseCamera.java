@@ -289,6 +289,34 @@ public class BaseCamera implements CameraEventListnerInterface, CameraParameterI
         setParameters(parameters);
     }
 
+    // Used by the timelapse's Holy Grail mode: caps how far the camera's own
+    // native Auto ISO metering is allowed to raise ISO when ISO is set to Auto
+    // (0). This is a real, documented Sony camera parameter (same one exposed
+    // in the camera's own menus as "ISO AUTO Max"), not something reimplemented
+    // in this app -- the camera's own metering does the actual exposure
+    // tracking, we're just fencing it in.
+    public int getISOAutoMax()
+    {
+        return getModifier().getISOAutoMax();
+    }
+
+    public void setISOAutoMax(int value)
+    {
+        Camera.Parameters parameters = getEmptyParameters();
+        CameraEx.ParametersModifier modifier = m_camera.createParametersModifier(parameters);
+        modifier.setISOAutoMax(value);
+        setParameters(parameters);
+    }
+
+    // Fires after every completed exposure with the actual settings the camera
+    // used (including the ISO Auto actually picked). Used by the timelapse's
+    // Holy Grail mode to detect when Auto ISO has hit its ceiling and the
+    // shutter speed itself needs to start extending instead.
+    public void setExposureCompleteListener(CameraEx.ExposureCompleteListener listener)
+    {
+        m_camera.setExposureCompleteListener(listener);
+    }
+
     public void setPreviewMagnification(int factor, Pair position)
     {
         m_camera.setPreviewMagnification(factor, position);

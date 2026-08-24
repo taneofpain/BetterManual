@@ -9,5 +9,6 @@
     <string name="ask_bulbtime" translatable="false">bulbtime</string>
     <string name="ask_showstaralign" translatable="false">showstaralign</string>
     <string name="ask_showstaraligngrid" translatable="false">showstaraligngrid</string>
+    <string name="ask_timelapseScreenOff" translatable="false">timelapseScreenOff</string>
     <integer name="bla">1</integer>
 </resources>
