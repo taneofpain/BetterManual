@@ -72,6 +72,13 @@ public class CaptureModeAfBracket extends CaptureMode implements KeyEvents, Capt
             return false;
         if (isActive())
             abort();
+        // reset() sets focusNear/focusFar/pictureCount to sane starting values
+        // (pictureCount = 2). Without this, pictureCount is left at its raw
+        // Java default of 0 the first time this mode is used, and confirming
+        // through Near/Far/Picture-Count without ever touching the dial divides
+        // by that 0 in AfBracketCaptureController's constructor below, crashing
+        // the app with an ArithmeticException.
+        reset();
         FocusDriveController.GetInstance().setFocusPostionChangedEventListner(this);
         return true;
     }
@@ -410,6 +417,12 @@ public class CaptureModeAfBracket extends CaptureMode implements KeyEvents, Capt
 
         public AfBracketCaptureController(int minFocusPos, int maxFocusPos, int picturCount)
         {
+            // Belt-and-suspenders: prepare() now calls reset(), which sets
+            // pictureCount to 2, but nothing stops a future caller from getting
+            // here with 0 again. Dividing by picturCount below crashes the app
+            // outright (ArithmeticException) if it's ever 0, so floor it.
+            if (picturCount < 2)
+                picturCount = 2;
             focusPositions = new int[picturCount];
             int dif = maxFocusPos -minFocusPos;
             int step = dif/picturCount;

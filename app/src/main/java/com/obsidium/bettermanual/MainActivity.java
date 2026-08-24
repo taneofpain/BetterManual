@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.os.Build;
+import android.app.Activity;
 
 import com.github.ma1co.pmcademo.app.BaseActivity;
 import com.obsidium.bettermanual.camera.CameraInstance;
@@ -58,10 +60,13 @@ public class MainActivity extends BaseActivity implements ActivityInterface, Cam
 
     private AvIndexManager avIndexManager;
 
+    private static boolean isA6000 = false;
+
+    private static boolean isA5100 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG,"onCreate");
+        Log.d(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         if (!(Thread.getDefaultUncaughtExceptionHandler() instanceof CustomExceptionHandler))
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler());
@@ -72,12 +77,27 @@ public class MainActivity extends BaseActivity implements ActivityInterface, Cam
         surfaceViewHolder = (FrameLayout) findViewById(R.id.surfaceView);
         //surfaceView.setOnTouchListener(new CameraUiFragment.SurfaceSwipeTouchListener(getContext()));
         if (AvIndexManager.isSupported())
-            avIndexManager = new AvIndexManager(getContentResolver(),getApplicationContext());
+            avIndexManager = new AvIndexManager(getContentResolver(), getApplicationContext());
 
-        layoutHolder = (LinearLayout)findViewById(R.id.fragment_holder);
+        layoutHolder = (LinearLayout) findViewById(R.id.fragment_holder);
         Preferences.CREATE(getApplicationContext());
 
+        // Target model identification string extraction from Sony Android kernel
+        String model = Build.MODEL;
+        if ("ILCE-6000".equalsIgnoreCase(model)) {
+            isA6000 = true;
+        } else if ("ILCE-5100".equalsIgnoreCase(model)) {
+            isA5100 = true;
+        }
     }
+    public static boolean hasDualDials() {
+            return isA6000; // Returns true for top mode dial + control wheel setup
+        }
+
+    public static boolean supportsTouchInput() {
+            return isA5100; // Returns true only for touch enabled screens
+        }
+
 
     @Override
     protected void onResume() {
@@ -262,7 +282,8 @@ public class MainActivity extends BaseActivity implements ActivityInterface, Cam
 
     private void removeSurfaceView()
     {
-        m_surfaceHolder.removeCallback(this);
+        if (m_surfaceHolder != null)
+            m_surfaceHolder.removeCallback(this);
         surfaceView = null;
         surfaceViewHolder.removeAllViews();
     }

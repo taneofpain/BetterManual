@@ -64,7 +64,7 @@ public class Preferences
 
     public String getDriveMode()
     {
-        return m_prefs.getString(context.getString(R.string.ask_driveMode), CameraEx.ParametersModifier.DRIVE_MODE_BURST);
+        return m_prefs.getString(context.getString(R.string.ask_driveMode), CameraEx.ParametersModifier.DRIVE_MODE_SINGLE);
     }
 
     public void setDriveMode(String mode)
@@ -74,7 +74,7 @@ public class Preferences
 
     public String getBurstDriveSpeed()
     {
-        return m_prefs.getString(context.getString(R.string.ask_burstDriveSpeed), CameraEx.ParametersModifier.BURST_DRIVE_SPEED_HIGH);
+        return m_prefs.getString(context.getString(R.string.ask_burstDriveSpeed), CameraEx.ParametersModifier.BURST_DRIVE_SPEED_LOW);
     }
 
     public void setBurstDriveSpeed(String speed)

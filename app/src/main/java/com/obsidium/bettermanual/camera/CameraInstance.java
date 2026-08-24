@@ -73,7 +73,18 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
 /*        CameraEx.OpenOptions options = new CameraEx.OpenOptions();
         options.setPreview(true);*/
         Log.d(TAG, "Open Cam");
-        m_camera = CameraEx.open(0, null);
+        try {
+            m_camera = CameraEx.open(0, null);
+        }
+        catch (RuntimeException ex) {
+            // If the native open fails (camera busy, hardware not ready yet, etc.)
+            // m_camera stays null and we bail out cleanly instead of crashing the
+            // whole process. closeCamera() already tolerates m_camera being null.
+            Log.d(TAG, "startCamera failed");
+            ex.printStackTrace();
+            cameraIsOpen = false;
+            return;
+        }
         cameraIsOpen = true;
         /*cameraSequence = CameraSequence.open(m_camera);
         setOptions(null);
@@ -206,6 +217,19 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
     }
 
     public void closeCamera() {
+        // If the camera never finished opening (e.g. onPause() lands before the
+        // posted startCamera() runnable from surfaceCreated() has run), m_camera
+        // and everything below it is still null. Every model field is null-checked
+        // individually further down, but m_camera itself never was, so this used to
+        // throw an uncaught NPE here -- crashing the whole process and leaving the
+        // battery BroadcastReceiver registered (never reaching batteryObserverModel
+        // .stop() below). That crash is what looks like the app "restarting itself":
+        // the OS auto-relaunches it per the resume_key policy in notifyAppInfo().
+        if (m_camera == null) {
+            cameraIsOpen = false;
+            return;
+        }
+
         cameraIsOpen = false;
         Log.d(TAG, "closeCamera");
 

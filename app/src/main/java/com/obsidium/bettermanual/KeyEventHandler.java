@@ -17,9 +17,23 @@ public class KeyEventHandler {
     private KeyEvents defaultListner;
     private final boolean log = false;
 
+    // The a5100 only has a single control dial (it reports as DIAL_1 / "upper" dial),
+    // unlike the a6000 which has two independent dials. Every KeyEvents implementor in
+    // this app puts its real adjustment logic in onLowerDialChanged (DIAL_2) and leaves
+    // onUpperDialChanged as a no-op, since that's all the a6000 ever needed. When this
+    // flag is set, DIAL_1 events are routed to onLowerDialChanged instead, so the a5100's
+    // one dial actually drives the existing adjustment logic instead of hitting the
+    // unused onUpperDialChanged stub. Off by default so a6000 behaviour is unchanged.
+    private boolean singleDialMode = false;
+
     public KeyEventHandler(KeyEvents defaultListner)
     {
         this.defaultListner = defaultListner;
+    }
+
+    public void setSingleDialMode(boolean singleDialMode)
+    {
+        this.singleDialMode = singleDialMode;
     }
 
     public void setDefaultListner()
@@ -104,9 +118,9 @@ public class KeyEventHandler {
                 return dialEventListner.onEnterKeyDown();
 
             case ScalarInput.ISV_DIAL_1_CLOCKWISE:
-                return dialEventListner.onUpperDialChanged(1);
+                return singleDialMode ? dialEventListner.onLowerDialChanged(1) : dialEventListner.onUpperDialChanged(1);
             case ScalarInput.ISV_DIAL_1_COUNTERCW:
-                return dialEventListner.onUpperDialChanged(-1);
+                return singleDialMode ? dialEventListner.onLowerDialChanged(-1) : dialEventListner.onUpperDialChanged(-1);
             case ScalarInput.ISV_DIAL_2_CLOCKWISE:
                 return dialEventListner.onLowerDialChanged(1);
             case ScalarInput.ISV_DIAL_2_COUNTERCW:
@@ -142,7 +156,7 @@ public class KeyEventHandler {
                 return dialEventListner.onZoomOffKey();
             case ScalarInput.ISV_KEY_ZOOM_TELE: //zoom in
                 return dialEventListner.onZoomTeleKey();
-            case ScalarInput.ISV_KEY_IR_ZOOM_WIDE: //zoom out
+            case ScalarInput.ISV_KEY_ZOOM_WIDE: //zoom out
                 return dialEventListner.onZoomWideKey();
         }
         return true;
@@ -205,7 +219,7 @@ public class KeyEventHandler {
                 return "ZoomOff";
             case ScalarInput.ISV_KEY_ZOOM_TELE: //zoom in
                 return "ZoomTele";
-            case ScalarInput.ISV_KEY_IR_ZOOM_WIDE: //zoom out
+            case ScalarInput.ISV_KEY_ZOOM_WIDE: //zoom out
                 return "ZoomWideKey";
         }
         return String.valueOf(key);

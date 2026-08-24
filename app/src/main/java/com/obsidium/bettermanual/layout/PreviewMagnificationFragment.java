@@ -356,17 +356,31 @@ public class PreviewMagnificationFragment extends BaseLayout implements CameraEx
 
     @Override
     public boolean onZoomTeleKey() {
-        return false;
+        if (m_curPreviewMagnification == 100) {
+            m_curPreviewMagnification = 200;
+            CameraInstance.GET().setPreviewMagnification(m_curPreviewMagnification, m_curPreviewMagnificationPos);
+        }
+        return true;
     }
 
     @Override
     public boolean onZoomWideKey() {
-        return false;
+        if (m_curPreviewMagnification == 200) {
+            m_curPreviewMagnification = 100;
+            CameraInstance.GET().setPreviewMagnification(m_curPreviewMagnification, m_curPreviewMagnificationPos);
+        }
+        return true;
     }
 
     @Override
     public boolean onZoomOffKey() {
-        return false;
+        // Lever released back to neutral. This is the exit path for bodies with no
+        // dedicated AEL button (e.g. the a5100) — press-and-hold to check focus,
+        // release to go back. Mirrors onAelKeyUp() above.
+        activityInterface.getDialHandler().setDefaultListner();
+        CameraInstance.GET().stopPreviewMagnification();
+        activityInterface.loadFragment(MainActivity.FRAGMENT_CAMERA_UI);
+        return true;
     }
 
     @Override

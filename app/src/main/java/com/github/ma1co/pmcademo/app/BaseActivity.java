@@ -37,6 +37,12 @@ public class BaseActivity extends Activity implements KeyEvents {
         Log.d(TAG,"onCreate");
         super.onCreate(savedInstanceState);
         keyEventHandler = new KeyEventHandler(this);
+        keyEventHandler.setSingleDialMode(isSingleDialDevice());
+    }
+
+    // The a5100 has one control dial; the a6000 has two. See KeyEventHandler for why this matters.
+    protected boolean isSingleDialDevice() {
+        return "ILCE-5100".equals(getDeviceInfo().getModel());
     }
 
     @Override
