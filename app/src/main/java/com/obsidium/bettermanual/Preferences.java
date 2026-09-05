@@ -141,4 +141,38 @@ public class Preferences
     {
         m_prefs.edit().putBoolean(context.getString(R.string.ask_showstaraligngrid),show).commit();
     }
+
+    // Defaults on: matches how most dedicated intervalometer apps behave (e.g.
+    // the jonasjuffinger/TimeLapse plugin this was modeled on) -- screen off
+    // between shots saves meaningful battery over a long timelapse. Toggleable
+    // via the Fn key while setting up the timelapse.
+    public boolean getTimelapseScreenOff()
+    {
+        return m_prefs.getBoolean(context.getString(R.string.ask_timelapseScreenOff), true);
+    }
+
+    public void setTimelapseScreenOff(boolean off)
+    {
+        m_prefs.edit().putBoolean(context.getString(R.string.ask_timelapseScreenOff), off).commit();
+    }
+
+    public int getAspectRatioGuideIndex()
+    {
+        return m_prefs.getInt(context.getString(R.string.ask_aspectRatioGuideIndex), 0);
+    }
+
+    public void setAspectRatioGuideIndex(int index)
+    {
+        m_prefs.edit().putInt(context.getString(R.string.ask_aspectRatioGuideIndex), index).commit();
+    }
+
+    public int getAspectRatioGuideColorIndex()
+    {
+        return m_prefs.getInt(context.getString(R.string.ask_aspectRatioGuideColorIndex), 0);
+    }
+
+    public void setAspectRatioGuideColorIndex(int index)
+    {
+        m_prefs.edit().putInt(context.getString(R.string.ask_aspectRatioGuideColorIndex), index).commit();
+    }
 }

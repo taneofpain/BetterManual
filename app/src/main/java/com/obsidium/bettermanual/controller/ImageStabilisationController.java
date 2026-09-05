@@ -20,7 +20,7 @@ public class ImageStabilisationController extends ImageViewController<ImageStabi
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_imagestab_specific;
     }
 
     @Override

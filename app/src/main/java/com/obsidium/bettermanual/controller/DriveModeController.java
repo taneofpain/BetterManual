@@ -22,7 +22,7 @@ public class DriveModeController extends ImageViewController<DriveModeModel> {
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_drivemode_specific;
     }
 
     @Override

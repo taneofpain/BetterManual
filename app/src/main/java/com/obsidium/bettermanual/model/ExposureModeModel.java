@@ -9,11 +9,20 @@ public class ExposureModeModel extends AbstractModel<ExposureModeModel.ExposureM
 
     public ExposureModeModel(CameraInstance camera) {
         super(camera);
-        if (camera.getSceneMode().equals(CameraEx.ParametersModifier.SCENE_MODE_APERTURE_PRIORITY))
+        // getSceneMode() is a direct pass-through to the native camera API
+        // with no null-safety of its own -- calling .equals() on it directly
+        // (three times, previously) would NPE immediately in this
+        // constructor if it ever returned null, crashing the app on every
+        // camera open before the UI even shows. Captured once into a local
+        // with a null guard instead of calling the native getter three times.
+        String sceneMode = camera.getSceneMode();
+        if (sceneMode == null)
+            value = ExposureModes.other;
+        else if (sceneMode.equals(CameraEx.ParametersModifier.SCENE_MODE_APERTURE_PRIORITY))
             value = ExposureModes.aperture;
-        else if (camera.getSceneMode().equals(CameraEx.ParametersModifier.SCENE_MODE_MANUAL_EXPOSURE))
+        else if (sceneMode.equals(CameraEx.ParametersModifier.SCENE_MODE_MANUAL_EXPOSURE))
             value = ExposureModes.manual;
-        else if (camera.getSceneMode().equals(CameraEx.ParametersModifier.SCENE_MODE_SHUTTER_PRIORITY))
+        else if (sceneMode.equals(CameraEx.ParametersModifier.SCENE_MODE_SHUTTER_PRIORITY))
             value = ExposureModes.shutter;
         else
             value = ExposureModes.other;

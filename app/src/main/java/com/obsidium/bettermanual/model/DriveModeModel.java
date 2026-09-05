@@ -33,17 +33,22 @@ public class DriveModeModel extends AbstractModel<String> {
     }
 
     public void toggle() {
+        // getDriveMode() is a direct pass-through to the native camera API
+        // with no null-safety of its own -- calling .equals() on it directly
+        // would NPE if it ever returned null. Treated as "single" if so,
+        // same fallback this method's own else-branch already uses for any
+        // other unrecognized value.
         final String driveMode = camera.getDriveMode();
         final String newBurstSpeed;
-        if (driveMode.equals(CameraEx.ParametersModifier.DRIVE_MODE_SINGLE))
+        if (driveMode != null && driveMode.equals(CameraEx.ParametersModifier.DRIVE_MODE_SINGLE))
         {
             value = CameraEx.ParametersModifier.DRIVE_MODE_BURST;
             newBurstSpeed = CameraEx.ParametersModifier.BURST_DRIVE_SPEED_HIGH;
         }
-        else if (driveMode.equals(CameraEx.ParametersModifier.DRIVE_MODE_BURST))
+        else if (driveMode != null && driveMode.equals(CameraEx.ParametersModifier.DRIVE_MODE_BURST))
         {
             final String burstDriveSpeed = CameraInstance.GET().getBurstDriveSpeed();
-            if (burstDriveSpeed.equals(CameraEx.ParametersModifier.BURST_DRIVE_SPEED_LOW))
+            if (burstDriveSpeed != null && burstDriveSpeed.equals(CameraEx.ParametersModifier.BURST_DRIVE_SPEED_LOW))
             {
                 value = CameraEx.ParametersModifier.DRIVE_MODE_SINGLE;
                 newBurstSpeed = burstDriveSpeed;

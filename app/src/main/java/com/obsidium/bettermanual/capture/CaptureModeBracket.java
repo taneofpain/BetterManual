@@ -21,6 +21,26 @@ import com.sony.scalar.hardware.CameraEx;
 public class CaptureModeBracket extends CaptureMode implements  ShutterController.ShutterSpeedEvent, KeyEvents, CaptureSession.CaptureDoneEvent {
 
     private final String TAG = CaptureModeBracket.class.getSimpleName();
+    // Lets a currently-running bracket sequence be cancelled cleanly via
+    // Delete on the main screen (see CameraUiFragment.onDeleteKeyUp()),
+    // instead of Delete's other existing behavior there -- closing the whole
+    // app outright -- which would skip abort()'s cleanup (re-enabling the
+    // hardware shutter button, restoring the hidden UI, etc.) if a sequence
+    // happened to be running. Mirrors the same fix already made for
+    // CaptureModeTimelapse.
+    private static CaptureModeBracket s_activeInstance;
+
+    public static boolean cancelIfActive()
+    {
+        if (s_activeInstance != null && s_activeInstance.isActive())
+        {
+            Log.d(CaptureModeBracket.class.getSimpleName(), "Cancelling active bracket sequence instead of closing the app");
+            s_activeInstance.abort();
+            return true;
+        }
+        return false;
+    }
+
     // Bracketing
     private int             m_bracketStep;  // in 1/3 stops
     private int             m_bracketMaxPicCount;
@@ -121,6 +141,7 @@ public class CaptureModeBracket extends CaptureMode implements  ShutterControlle
         currentDialMode = BRACKET_NON;
         //m_handler.removeCallbacks(m_timelapseRunnable);
         isActive = false;
+        s_activeInstance = null;
         cameraUiInterface.showMessageDelayed("Bracketing finished");
         CameraInstance.GET().enableHwShutterButton();
         CameraInstance.GET().startPreview();
@@ -298,6 +319,7 @@ public class CaptureModeBracket extends CaptureMode implements  ShutterControlle
             cameraUiInterface.getActivityInterface().getDialHandler().setDialEventListner((KeyEvents)cameraUiInterface);
             ShutterController.GetInstance().setShutterSpeedEventListner(this);
             cameraUiInterface.getActivityInterface().setCaptureDoneEventListner(this);
+            s_activeInstance = this;
             startCountDown();
             currentDialMode = BRACKET_NON;
         }

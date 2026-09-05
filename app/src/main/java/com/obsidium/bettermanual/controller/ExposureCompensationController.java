@@ -18,6 +18,6 @@ public class ExposureCompensationController extends TextViewController<ExposureC
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_ev;
     }
 }

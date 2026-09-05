@@ -19,7 +19,7 @@ public class LongExposureNoiseReductionController extends ImageViewController<Lo
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_longexponr_specific;
     }
 
     @Override

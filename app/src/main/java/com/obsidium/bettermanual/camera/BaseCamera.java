@@ -202,6 +202,34 @@ public class BaseCamera implements CameraEventListnerInterface, CameraParameterI
         return getParameters().getSceneMode();
     }
 
+    // Native lens identification, for a real Sony/E-mount lens with
+    // electronic contacts (as opposed to a manual legacy lens, which has no
+    // way to communicate with the body at all -- that's the whole reason
+    // the separate legacy-lens profile system exists). Confirmed real API,
+    // though a mix of V7/V14 vintage fields, so still worth guarding at the
+    // call site rather than assuming every field is populated on every body.
+    public com.sony.scalar.hardware.CameraEx.LensInfo getLensInfo()
+    {
+        return m_camera.getLensInfo();
+    }
+
+    // Real, in-camera cropping -- not the aspect-ratio guide overlay. Only
+    // some ratios have a native equivalent here (1:1 and 16:9, out of the
+    // guide's full list); the rest (4:5, 6:7, 21:9, 65:24) have no matching
+    // constant at all and can only ever be a compositional guide. This is a
+    // "V1" framework API, the oldest/most broadly-implemented tier, so it's
+    // a reasonable bet for actually being supported -- unlike some of the
+    // newer APIs used elsewhere in this app that turned out not to be.
+    public java.util.List<String> getSupportedImageAspectRatios()
+    {
+        return getModifier().getSupportedImageAspectRatios();
+    }
+
+    public String getImageAspectRatio()
+    {
+        return getModifier().getImageAspectRatio();
+    }
+
     public void setDriveMode(String value)
     {
         Log.d(TAG, "setDriveMode:" +value);
@@ -287,6 +315,52 @@ public class BaseCamera implements CameraEventListnerInterface, CameraParameterI
         CameraEx.ParametersModifier modifier = m_camera.createParametersModifier(parameters);
         modifier.setISOSensitivity(value);
         setParameters(parameters);
+    }
+
+    // Used by the timelapse's Holy Grail mode: caps how far the camera's own
+    // native Auto ISO metering is allowed to raise ISO when ISO is set to Auto
+    // (0). This is a real, documented Sony camera parameter (same one exposed
+    // in the camera's own menus as "ISO AUTO Max"), not something reimplemented
+    // in this app -- the camera's own metering does the actual exposure
+    // tracking, we're just fencing it in.
+    public int getISOAutoMax()
+    {
+        return getModifier().getISOAutoMax();
+    }
+
+    public void setISOAutoMax(int value)
+    {
+        Camera.Parameters parameters = getEmptyParameters();
+        CameraEx.ParametersModifier modifier = m_camera.createParametersModifier(parameters);
+        modifier.setISOAutoMax(value);
+        setParameters(parameters);
+    }
+
+    // Fires after every completed exposure with the actual settings the camera
+    // used. Used by the timelapse's Holy Grail mode as the trigger point to
+    // request a fresh exposure reading (see getProperExposureLevel() below).
+    public void setExposureCompleteListener(CameraEx.ExposureCompleteListener listener)
+    {
+        m_camera.setExposureCompleteListener(listener);
+    }
+
+    // The a5100 doesn't implement the ISOAutoMax/AutoISOSensitivityListener
+    // pair (confirmed via NoSuchMethodError on real hardware), even though the
+    // same Auto-ISO-with-ceiling capability exists in the camera's own menus --
+    // it just isn't exposed through this API on this body. This is the
+    // fallback used instead: request a metered "how far off is the current
+    // exposure" reading, delivered asynchronously to the registered callback.
+    // This is a V3 framework API (vs. ISOAutoMax/ExposureCompleteListener being
+    // V6+), so it's a reasonable bet for being more broadly supported, but
+    // that's not guaranteed either -- callers should still handle it failing.
+    public void getProperExposureLevel()
+    {
+        m_camera.getProperExposureLevel();
+    }
+
+    public void setProperExposureLevelCallback(CameraEx.ProperExposureLevelCallback callback)
+    {
+        m_camera.setProperExposureLevelCallback(callback);
     }
 
     public void setPreviewMagnification(int factor, Pair position)

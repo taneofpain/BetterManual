@@ -32,6 +32,25 @@ public class CaptureModeBulb extends CaptureMode implements CaptureSession.Captu
         captureModeBulb = null;
     }
 
+    // Lets a currently-running bulb exposure be cancelled cleanly via Delete
+    // on the main screen (see CameraUiFragment.onDeleteKeyUp()), instead of
+    // Delete's other existing behavior there -- closing the whole app
+    // outright. That would be a particularly bad way for a bulb exposure to
+    // end: skipping abort()'s cleanup could leave the shutter open with no
+    // app left running to ever close it. Mirrors the same fix already made
+    // for CaptureModeTimelapse.
+    public static boolean cancelIfActive()
+    {
+        CaptureModeBulb instance = GetInstance();
+        if (instance != null && instance.isActive())
+        {
+            Log.d(CaptureModeBulb.class.getSimpleName(), "Cancelling active bulb capture instead of closing the app");
+            instance.abort();
+            return true;
+        }
+        return false;
+    }
+
     private final String TAG = CaptureModeBulb.class.getSimpleName();
     private long bulbCaptureTime = 0;
 

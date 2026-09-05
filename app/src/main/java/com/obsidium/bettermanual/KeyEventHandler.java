@@ -101,6 +101,11 @@ public class KeyEventHandler {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Wake the timelapse's screen-off (if active) immediately on any key,
+        // regardless of which listener is currently active -- see
+        // CaptureModeTimelapse.wakeDisplayIfOff() for why this can't just be
+        // handled through the normal per-key dispatch below.
+        com.obsidium.bettermanual.capture.CaptureModeTimelapse.wakeDisplayIfOff();
         if (dialEventListner == null)
             return true;
         if (log)

@@ -17,7 +17,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 10
         versionCode 14
-        versionName '1.5.7'
+        versionName '1.5.9'
         signingConfig signingConfigs.sign
     }
     buildTypes {

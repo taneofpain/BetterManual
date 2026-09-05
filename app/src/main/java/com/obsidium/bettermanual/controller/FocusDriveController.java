@@ -49,7 +49,7 @@ public class FocusDriveController extends AbstractController<View,FocusDriveMode
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_focusdrive_specific;
     }
 
     @Override

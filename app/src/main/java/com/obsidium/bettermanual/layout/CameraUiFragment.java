@@ -19,6 +19,11 @@ import com.obsidium.bettermanual.capture.CaptureModeBracket;
 import com.obsidium.bettermanual.capture.CaptureModeBulb;
 import com.obsidium.bettermanual.capture.CaptureModeTimelapse;
 import com.obsidium.bettermanual.controller.ApertureController;
+import com.obsidium.bettermanual.controller.AspectRatioGuideColorController;
+import com.obsidium.bettermanual.controller.AspectRatioGuideController;
+import com.obsidium.bettermanual.controller.LegacyLensNameController;
+import com.obsidium.bettermanual.controller.LegacySpecialItemController;
+import com.obsidium.bettermanual.controller.LegacyFocalLengthController;
 import com.obsidium.bettermanual.controller.Controller;
 import com.obsidium.bettermanual.controller.DriveModeController;
 import com.obsidium.bettermanual.controller.ExposureCompensationController;
@@ -30,6 +35,8 @@ import com.obsidium.bettermanual.controller.ImageStabilisationController;
 import com.obsidium.bettermanual.controller.IsoController;
 import com.obsidium.bettermanual.controller.LongExposureNoiseReductionController;
 import com.obsidium.bettermanual.controller.ShutterController;
+import com.obsidium.bettermanual.views.AspectRatioGuideView;
+import com.obsidium.bettermanual.views.LegacyLensStatusView;
 import com.obsidium.bettermanual.views.GridView;
 import com.obsidium.bettermanual.views.HistogramView;
 
@@ -54,6 +61,8 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
     private ImageView       m_ivBracket;
     private ImageView       m_ivAfBracket;
     private GridView m_vGrid;
+    private AspectRatioGuideView m_vAspectRatioGuide;
+    private LegacyLensStatusView m_vLegacyLensStatus;
     private TextView        m_tvHint;
     private View            m_lFocusScale;
 
@@ -153,6 +162,21 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
         DriveModeController.GetInstance().bindView((ImageView)findViewById(R.id.iv_drivemode));
         dialViews.add(DriveModeController.GetInstance());
 
+        AspectRatioGuideController.GetInstance().bindView((ImageView) findViewById(R.id.iv_aspectratioguide));
+        dialViews.add(AspectRatioGuideController.GetInstance());
+
+        AspectRatioGuideColorController.GetInstance().bindView((ImageView) findViewById(R.id.iv_aspectratioguidecolor));
+        dialViews.add(AspectRatioGuideColorController.GetInstance());
+
+        LegacyLensNameController.GetInstance().bindView((ImageView) findViewById(R.id.iv_legacylensname));
+        dialViews.add(LegacyLensNameController.GetInstance());
+
+        LegacySpecialItemController.GetInstance().bindView((ImageView) findViewById(R.id.iv_legacyspecial));
+        dialViews.add(LegacySpecialItemController.GetInstance());
+
+        LegacyFocalLengthController.GetInstance().bindView((ImageView) findViewById(R.id.iv_legacyfocal));
+        dialViews.add(LegacyFocalLengthController.GetInstance());
+
         bracket = new CaptureModeBracket(this);
         bracket.bindView((ImageView)findViewById(R.id.iv_bracket));
         dialViews.add(bracket);
@@ -194,6 +218,31 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
         activityInterface.getDialHandler().setDialEventListner(CameraUiFragment.this);
 
         m_vGrid.setVideoRect(activityInterface.getDisplayManager().getDisplayedVideoRect());
+
+        m_vAspectRatioGuide = (AspectRatioGuideView) findViewById(R.id.vAspectRatioGuide);
+        m_vAspectRatioGuide.setVideoRect(activityInterface.getDisplayManager().getDisplayedVideoRect());
+        AspectRatioGuideController.GetInstance().bindGuideView(m_vAspectRatioGuide);
+        AspectRatioGuideColorController.GetInstance().bindGuideView(m_vAspectRatioGuide);
+
+        m_vLegacyLensStatus = (LegacyLensStatusView) findViewById(R.id.vLegacyLensStatus);
+        m_vLegacyLensStatus.setVideoRect(activityInterface.getDisplayManager().getDisplayedVideoRect());
+        LegacyLensNameController.GetInstance().bindStatusView(m_vLegacyLensStatus);
+        LegacySpecialItemController.GetInstance().bindStatusView(m_vLegacyLensStatus);
+        LegacyFocalLengthController.GetInstance().bindStatusView(m_vLegacyLensStatus);
+        // Aspect-ratio guide/color status text also routes through this
+        // same shared view now -- see AspectRatioGuideView's class comment
+        // for why (consolidated so every control's status text renders at
+        // the same place, same font, rather than each drawing its own).
+        AspectRatioGuideController.GetInstance().bindStatusView(m_vLegacyLensStatus);
+        AspectRatioGuideColorController.GetInstance().bindStatusView(m_vLegacyLensStatus);
+
+        // Permanent (non-fading) display of the currently selected legacy
+        // lens (name, focal length, special item), or the detected native
+        // lens name if none is selected -- drawn on the same shared view,
+        // one line above its transient banner. Previously a separate
+        // TextView positioned relative to tvHint, which turned out
+        // unreliable; routed through the proven-working shared view instead.
+        com.obsidium.bettermanual.LegacyLensState.GET().bindStatusView(m_vLegacyLensStatus);
 
         // Preview/Histogram
         m_vHist = (HistogramView)findViewById(R.id.vHist);
@@ -624,6 +673,20 @@ public class CameraUiFragment extends BaseLayout implements View.OnClickListener
     @Override
     public boolean onDeleteKeyUp()
     {
+        // If a timelapse, bracket sequence, AF bracket sequence, or bulb
+        // exposure is currently running, cancel it instead of closing the
+        // app outright. Closing the app while one is active would kill it
+        // abruptly, skipping its abort()'s cleanup (restoring ISO/exposure,
+        // re-enabling the hardware shutter button, or -- worst case for a
+        // bulb exposure -- leaving the shutter open with nothing left
+        // running to ever close it) -- which is worse than just cancelling
+        // cleanly. See each class's cancelIfActive() for the detail.
+        if (CaptureModeTimelapse.cancelIfActive()
+                || CaptureModeBracket.cancelIfActive()
+                || CaptureModeAfBracket.cancelIfActive()
+                || CaptureModeBulb.cancelIfActive())
+            return true;
+
         // Exiting, make sure the app isn't restarted
         activityInterface.closeApp();
         return true;

@@ -47,7 +47,7 @@ public class ShutterController extends TextViewController<ShutterModel> {
 
     @Override
     public int getNavigationHelpID() {
-        return R.string.view_drivemode_navigation;
+        return R.string.view_shutter_specific;
     }
 
     public CameraEx.ShutterSpeedInfo getShutterSpeedInfo()

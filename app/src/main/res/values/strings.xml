@@ -16,6 +16,22 @@
     <string name="view_Timelapse">&icon_enterButton; to start Timelapse</string>
     <string name="view_ev">&icon_enterButton; to reset, &icon_top_right_dial; to change</string>
 
+    <!-- Specific navigation hints, replacing generic "to change" text that
+         didn't say what the control actually did. Matches the pattern
+         Timelapse/AfBracket/Aperture/EV already used, extended to the rest
+         of the vertical icon strip's controls. -->
+    <string name="view_shutter_specific">&icon_top_right_dial; to change Shutter Speed</string>
+    <string name="view_drivemode_specific">&icon_enterButton; to change Drive Mode</string>
+    <string name="view_exposuremode_specific">&icon_enterButton; to change Exposure Mode</string>
+    <string name="view_focusdrive_specific">&icon_enterButton; to change Focus Drive</string>
+    <string name="view_longexponr_specific">&icon_enterButton; to toggle Long Exposure NR</string>
+    <string name="view_imagestab_specific">&icon_enterButton; to toggle Image Stabilisation</string>
+    <string name="view_aspectratioguide_specific">&icon_lowerDial; to change Aspect Ratio, &icon_enterButton; to confirm</string>
+    <string name="view_aspectratioguidecolor_specific">&icon_lowerDial; to change Guide Line Color</string>
+    <string name="view_legacylensname_specific">&icon_lowerDial; to select Lens, &icon_enterButton; to confirm</string>
+    <string name="view_legacyfocal_specific">&icon_lowerDial; to change Focal Length, &icon_enterButton; to confirm</string>
+    <string name="view_legacyspecial_specific">&icon_lowerDial; to select Special item, &icon_enterButton; to confirm</string>
+
 
     <string name="icon_lowerDial" translatable="false">&icon_lowerDial;</string>
     <string name="icon_enterButton" translatable="false">&icon_enterButton;</string>

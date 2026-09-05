@@ -13,12 +13,22 @@ import com.obsidium.bettermanual.controller.ExposureCompensationController;
 import com.obsidium.bettermanual.controller.ExposureHintController;
 import com.obsidium.bettermanual.controller.ExposureModeController;
 import com.obsidium.bettermanual.controller.FocusDriveController;
+import com.obsidium.bettermanual.controller.AspectRatioGuideColorController;
+import com.obsidium.bettermanual.controller.LegacyLensNameController;
+import com.obsidium.bettermanual.controller.LegacySpecialItemController;
+import com.obsidium.bettermanual.controller.LegacyFocalLengthController;
+import com.obsidium.bettermanual.controller.AspectRatioGuideController;
 import com.obsidium.bettermanual.controller.HistogramController;
 import com.obsidium.bettermanual.controller.ImageStabilisationController;
 import com.obsidium.bettermanual.controller.IsoController;
 import com.obsidium.bettermanual.controller.LongExposureNoiseReductionController;
 import com.obsidium.bettermanual.controller.ShutterController;
 import com.obsidium.bettermanual.model.ApertureModel;
+import com.obsidium.bettermanual.model.AspectRatioGuideModel;
+import com.obsidium.bettermanual.model.AspectRatioGuideColorModel;
+import com.obsidium.bettermanual.model.LegacyLensNameModel;
+import com.obsidium.bettermanual.model.LegacySpecialItemModel;
+import com.obsidium.bettermanual.model.LegacyFocalLengthModel;
 import com.obsidium.bettermanual.model.BatteryObserverModel;
 import com.obsidium.bettermanual.model.DriveModeModel;
 import com.obsidium.bettermanual.model.ExposureCompensationModel;
@@ -56,6 +66,11 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
     private ImageStabilisationModel imageStabilisationModel;
     private LongExposureNoiseReductionModel longExposureNoiseReductionModel;
     private HistogramModel histogramModel;
+    private AspectRatioGuideModel aspectRatioGuideModel;
+    private AspectRatioGuideColorModel aspectRatioGuideColorModel;
+    private LegacyLensNameModel legacyLensNameModel;
+    private LegacySpecialItemModel legacySpecialItemModel;
+    private LegacyFocalLengthModel legacyFocalLengthModel;
     private FocusDriveModel focusDriveModel;
     private BatteryObserverModel batteryObserverModel;
 
@@ -143,6 +158,29 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
         histogramModel = new HistogramModel(this);
         m_camera.setPreviewAnalizeListener(histogramModel);
         HistogramController.GetInstance().bindModel(histogramModel);
+
+        // Purely local/preference-backed -- doesn't touch the camera at all,
+        // but created/bound here anyway to match how every other model in
+        // this class ties its lifecycle to camera open/close. Preferences
+        // persists the choice across that cycle regardless.
+        aspectRatioGuideModel = new AspectRatioGuideModel(this);
+        AspectRatioGuideController.GetInstance().bindModel(aspectRatioGuideModel);
+
+        aspectRatioGuideColorModel = new AspectRatioGuideColorModel(this);
+        AspectRatioGuideColorController.GetInstance().bindModel(aspectRatioGuideColorModel);
+
+        // Same lifecycle-tied pattern as the aspect-ratio models above --
+        // also purely local (LegacyLensState/profiles.xml on the SD card),
+        // no camera interaction, but bound here to match every other
+        // model's lifecycle in this class.
+        legacyLensNameModel = new LegacyLensNameModel(this);
+        LegacyLensNameController.GetInstance().bindModel(legacyLensNameModel);
+
+        legacySpecialItemModel = new LegacySpecialItemModel(this);
+        LegacySpecialItemController.GetInstance().bindModel(legacySpecialItemModel);
+
+        legacyFocalLengthModel = new LegacyFocalLengthModel(this);
+        LegacyFocalLengthController.GetInstance().bindModel(legacyFocalLengthModel);
 
         batteryObserverModel = new BatteryObserverModel(this);
         BatteryObserverController.GetInstance().bindModel(batteryObserverModel);
@@ -274,6 +312,21 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
         m_camera.setPreviewAnalizeListener(null);
         histogramModel = null;
 
+        AspectRatioGuideController.GetInstance().bindModel(null);
+        aspectRatioGuideModel = null;
+
+        AspectRatioGuideColorController.GetInstance().bindModel(null);
+        aspectRatioGuideColorModel = null;
+
+        LegacyLensNameController.GetInstance().bindModel(null);
+        legacyLensNameModel = null;
+
+        LegacySpecialItemController.GetInstance().bindModel(null);
+        legacySpecialItemModel = null;
+
+        LegacyFocalLengthController.GetInstance().bindModel(null);
+        legacyFocalLengthModel = null;
+
         FocusDriveController.GetInstance().bindModel(null);
         m_camera.setFocusDriveListener(null);
         focusDriveModel = null;
@@ -295,6 +348,22 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
         this.surfaceHolder = surface;
     }
 
+    // Read-only access to the live preview's luminance histogram, already
+    // continuously maintained by histogramModel (the same data driving the
+    // on-screen histogram view). Used by the timelapse's Holy Grail mode to
+    // compute exposure corrections directly from actual scene brightness,
+    // rather than the camera's own internal metering value -- see
+    // CaptureModeTimelapse for why that turned out to be impractical to
+    // calibrate (its scale/units aren't documented and testing showed it
+    // moving only ~40-50 per single-step correction against readings in the
+    // tens of thousands, meaning hundreds of shots to converge). This just
+    // reads histogramModel's current value non-invasively; nothing needs to
+    // be registered or restored, since we're not taking over the listener
+    // slot the way the earlier Auto ISO attempt needed to.
+    public short[] getHistogram() {
+        return histogramModel != null ? histogramModel.getValue() : null;
+    }
+
     public void startPreview() {
         Log.d(TAG,"startPreview");
         getCameraEx().getNormalCamera().startPreview();
@@ -313,6 +382,24 @@ public class CameraInstance extends BaseCamera implements  CameraSequence.Shutte
 
     public void disableHwShutterButton() {
         m_camera.stopDirectShutter(null);
+    }
+
+    // Used by the timelapse's Holy Grail mode to read the camera's *resolved*
+    // Auto ISO value per shot. ExposureCompleteListener's ExposureInfo.IsoSpeedRate
+    // is unreliable for this while ISO mode is Auto (0) -- this dedicated
+    // listener is what the existing ISO display (IsoModel) already relies on to
+    // show the live resolved value, e.g. "(A)" suffixed ISO in the UI. Only one
+    // listener can be registered at a time, so Holy Grail temporarily takes this
+    // over and must call restoreDefaultAutoISOSensitivityListener() when done, or
+    // the ISO display stops updating.
+    public void setAutoISOSensitivityListener(CameraEx.AutoISOSensitivityListener listener)
+    {
+        m_camera.setAutoISOSensitivityListener(listener);
+    }
+
+    public void restoreDefaultAutoISOSensitivityListener()
+    {
+        m_camera.setAutoISOSensitivityListener(isoModel);
     }
 
     public void cancelCapture()

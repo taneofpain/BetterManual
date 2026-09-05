@@ -168,8 +168,16 @@ public class PreviewMagnificationFragment extends BaseLayout implements CameraEx
 
     @Override
     public boolean onUpKeyUp() {
+    // Safety-net exit that doesn't depend on the zoom lever at all. The only
+    // other way out of this screen is the lever reporting "released"
+    // (onZoomOffKey). If the lever gets mechanically stuck engaged -- e.g.
+    // pressed/held while the camera is powering on -- that release event
+    // never arrives and there'd otherwise be no way back to normal shooting.
+        activityInterface.getDialHandler().setDefaultListner();
+        CameraInstance.GET().stopPreviewMagnification();
+        activityInterface.loadFragment(MainActivity.FRAGMENT_CAMERA_UI);
+        return true;
 
-        return false;
     }
 
     @Override

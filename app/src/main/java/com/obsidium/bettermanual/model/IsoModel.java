@@ -16,6 +16,15 @@ public class IsoModel extends AbstractModel<String> implements CameraEx.AutoISOS
     {
         super(cameraInstance);
         this.m_supportedIsos = camera.getSupportedISOSensitivities();
+        // getSupportedISOSensitivities() is a direct pass-through to the
+        // native camera API with no null-safety of its own -- if it ever
+        // returns null (unsupported, or a transient failure during camera
+        // init), getIsoPos() below immediately NPEs on m_supportedIsos.size(),
+        // crashing the app on every single camera open before the UI even
+        // shows. Falling back to an empty list keeps this class functional
+        // (ISO just can't be adjusted) instead of taking the whole app down.
+        if (this.m_supportedIsos == null)
+            this.m_supportedIsos = new java.util.ArrayList<>();
         m_curIso = camera.getISOSensitivity();
         value = "\uE488 " + String.valueOf(0) + (m_curIso == 0 ? "(A)" : "");
         currentIsoPos = getIsoPos(m_curIso);
@@ -36,6 +45,9 @@ public class IsoModel extends AbstractModel<String> implements CameraEx.AutoISOS
 
     @Override
     public void setValue(int i) {
+        if (m_supportedIsos == null || m_supportedIsos.isEmpty())
+            return;
+
         currentIsoPos += i;
 
         if (currentIsoPos < 0)
@@ -84,7 +96,10 @@ public class IsoModel extends AbstractModel<String> implements CameraEx.AutoISOS
     }
 
     public int getFirstManualIso() {
-        if (m_supportedIsos == null)
+        // Index 1 is "the first manual ISO after Auto at index 0" -- assumes
+        // at least 2 entries. Every real camera has multiple ISO settings,
+        // but this was previously unguarded against a shorter list too.
+        if (m_supportedIsos == null || m_supportedIsos.size() < 2)
             return 0;
 
         return m_supportedIsos.get(1);

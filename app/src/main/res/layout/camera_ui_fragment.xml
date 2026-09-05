@@ -13,11 +13,23 @@
         android:id="@+id/vGrid"
         />
 
+    <com.obsidium.bettermanual.views.AspectRatioGuideView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vAspectRatioGuide"
+        />
+
+    <com.obsidium.bettermanual.views.LegacyLensStatusView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vLegacyLensStatus"
+        />
+
 
     <LinearLayout
         android:id="@+id/left_holder"
         android:layout_width="@dimen/uiItemsSize"
-        android:layout_height="wrap_content"
+        android:layout_height="280dp"
         android:layout_centerVertical="false"
         android:background="#9e000000"
         android:orientation="vertical">
@@ -25,41 +37,83 @@
         <ImageView
             android:id="@+id/iv_exposuremode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
            />
 
         <ImageView
             android:id="@+id/iv_drivemode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_aspectratioguide"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_aspectratioguidecolor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_legacylensname"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_legacyspecial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_legacyfocal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
         <ImageView
             android:id="@+id/iv_bracket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
         <ImageView
             android:id="@+id/iv_timelapse"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
         <ImageView
             android:id="@+id/iv_afbracket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/iv_imagestab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
         <ImageView
             android:id="@+id/iv_longexponr"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
     </LinearLayout>
 
