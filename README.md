@@ -1,5 +1,14 @@
 # BetterManual
 
+This fork includes:
+1) QoS changes to make it more stable
+2) Support for holy grail timelapse  - it may take a few frames to get the right exposure depending on how far off it is
+3) Support for several crop modes including xpan. you can see them in the viewfinder and they write to the log with the a6000 as you can't modify exif data with the sdk.
+4) Integration of the legacy lens profiles.xml from legacylens repository except it needs to be in root as PROFILES.XML it also writes to a logfile in root you can look up later
+5) Staged intervalometer
+6) Updates the original branch i borrowed from with support for A5100 cameras.
+Tested on A6000 and A5100 specifically.
+
 This app is intended to ease shooting in manual and aperture priority mode with (legacy) prime lenses on the A6000 camera. It uses the [OpenMemories Framework](https://github.com/ma1co/OpenMemories-Framework).
 **While the app may work on other cameras, it was written specifically for use with the A6000.**
 
